@@ -1,0 +1,20 @@
+{
+  "name": "vue-cep-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.1.3",
+    "v-mask": "^2.3.0",
+    "vue": "^3.2.41"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "tailwindcss": "^3.2.4",
+    "vite": "^3.1.8"
+  }
+}
