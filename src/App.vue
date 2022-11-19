@@ -11,13 +11,23 @@ const responseCep = reactive({ bairro: '', cep: '', localidade: '', logradouro: 
 const consultar = () => {
   loading.value = true;
   onError.value = false;
+  responseCep.bairro = "";
+    responseCep.cep = "";
+    responseCep.uf = "";
+    responseCep.localidade = "";
+    responseCep.logradouro = "";
   if(cepInput.value.length == 9){
   axios({ url: `https://viacep.com.br/ws/${cepInput.value.replace('-', '')}/json/` }).then((res) => {
+    if(!res.data.erro){
     responseCep.bairro = res.data.bairro;
     responseCep.cep = res.data.cep;
     responseCep.uf = res.data.uf;
     responseCep.localidade = res.data.localidade;
     responseCep.logradouro = res.data.logradouro;
+  }else{
+    msgError.value =  'CEP invalido';
+    onError.value = true;
+  }
   }).catch(error=>{
     msgError.value =  'Um erro Ocorreu, Tente novamente';
     onError.value = true;
@@ -46,7 +56,7 @@ const formatcepinput = () => {
           @click="consultar()" class="rounded-r-full bg-slate-800 text-white h-10 w-1/3 md:w-1/6">consultar</button>
     </div>
     <div class="md:w-2/6 mx-auto">
-    <div v-if="responseCep.uf != ''">
+    <div v-if="responseCep.cep != ''">
       <p class="text-xl" :class="responseCep.cep == undefined ? 'text-red-900' : ''">CEP: {{ responseCep.cep != undefined
           ? responseCep.cep : "não definido"
       }}</p>
