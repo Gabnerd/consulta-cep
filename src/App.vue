@@ -45,6 +45,7 @@ const formatcepinput = () => {
         <input type="text" v-model="cepInput" class="rounded-l-full h-10 w-1/2 md:w-1/5" @change="formatcepinput()"><button
           @click="consultar()" class="rounded-r-full bg-slate-800 text-white h-10 w-1/3 md:w-1/6">consultar</button>
     </div>
+    <div class="md:w-2/6 mx-auto">
     <div v-if="responseCep.uf != ''">
       <p class="text-xl" :class="responseCep.cep == undefined ? 'text-red-900' : ''">CEP: {{ responseCep.cep != undefined
           ? responseCep.cep : "não definido"
@@ -60,6 +61,7 @@ const formatcepinput = () => {
       <p class="text-xl" :class="responseCep.logradouro == undefined ? 'text-red-900' : ''">Logradouro:
         {{ responseCep.logradouro != undefined ? responseCep.logradouro : "não definido" }}</p>
     </div>
+  </div>
     <div class="mx-auto w-fit mt-5 text-red-800 bg-red-300 px-5 py-3 rounded" v-if="onError">
       {{msgError}}
     </div>
