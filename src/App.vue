@@ -44,7 +44,6 @@ const consultar = () => {
 }
 
 const formatcepinput = () => {
-  //99999-999
   cepInput.value = cepInput.value.replace('-', '').slice(0, 5) + "-" + cepInput.value.replace('-', '').slice(5);
 }
 </script>
