@@ -50,28 +50,26 @@ const formatcepinput = () => {
 </script>
 
 <template>
-  <div class="mx-auto w-full mt-10">
+  <div class="mx-auto w-full mt-10 flex flex-col">
     <div class="flex justify-center items-center ">
-        <input type="text" v-model="cepInput" class="rounded-l-full h-10 w-1/2 md:w-1/5" @change="formatcepinput()"><button
-          @click="consultar()" class="rounded-r-full bg-slate-800 text-white h-10 w-1/3 md:w-1/6">consultar</button>
+        <input type="text" v-model="cepInput" class="rounded-l-full h-10 w-1/2 md:w-3/12" @change="formatcepinput()">
+        <button @click="consultar()" class="rounded-r-full bg-slate-800 text-white h-10 w-1/3 md:w-1/6">consultar</button>
     </div>
-    <div class="md:w-2/6 mx-auto">
-    <div v-if="responseCep.cep != ''">
-      <p class="text-xl" :class="responseCep.cep == undefined ? 'text-red-900' : ''">CEP: {{ responseCep.cep != undefined
+    <div v-if="responseCep.cep != ''" class="md:w-5/12 mx-auto border rounded mt-5 px-5 py-2">
+      <p class="text-xl" :class="responseCep.cep == '' ? 'text-red-900' : ''">CEP: {{ responseCep.cep != ''
           ? responseCep.cep : "não definido"
       }}</p>
-      <p class="text-xl" :class="responseCep.uf == undefined ? 'text-red-900' : ''">Unidade Federal: {{ responseCep.uf !=
-          undefined ? responseCep.uf : "não definido"
+      <p class="text-xl" :class="responseCep.uf == '' ? 'text-red-900' : ''">Unidade Federal: {{ responseCep.uf !=
+          '' ? responseCep.uf : "não definido"
       }}</p>
-      <p class="text-xl" :class="responseCep.bairro == undefined ? 'text-red-900' : ''">Bairro: {{ responseCep.bairro !=
-          undefined ? responseCep.bairro : "não definido"
+      <p class="text-xl" :class="responseCep.bairro == '' ? 'text-red-900' : ''">Bairro: {{ responseCep.bairro !=
+          '' ? responseCep.bairro : "não definido"
       }}</p>
-      <p class="text-xl" :class="responseCep.localidade == undefined ? 'text-red-900' : ''">Localidade:
-        {{ responseCep.localidade != undefined ? responseCep.localidade : "não definido" }}</p>
-      <p class="text-xl" :class="responseCep.logradouro == undefined ? 'text-red-900' : ''">Logradouro:
-        {{ responseCep.logradouro != undefined ? responseCep.logradouro : "não definido" }}</p>
+      <p class="text-xl" :class="responseCep.localidade == '' ? 'text-red-900' : ''">Localidade:
+        {{ responseCep.localidade != '' ? responseCep.localidade : "não definido" }}</p>
+      <p class="text-xl" :class="responseCep.logradouro == '' ? 'text-red-900' : ''">Logradouro:
+        {{ responseCep.logradouro != '' ? responseCep.logradouro : "não definido" }}</p>
     </div>
-  </div>
     <div class="mx-auto w-fit mt-5 text-red-800 bg-red-300 px-5 py-3 rounded" v-if="onError">
       {{msgError}}
     </div>
